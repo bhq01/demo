@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmls = "http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!--  consumer's name  -->
+    <dubbo:application name="dubbo-client" />
+
+    <!-- ZooKeeper's address -->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" />
+
+    <!-- remote proxy -->
+    <dubbo:reference id="helloService" interface="com.example.demo.dubbo.api.IHelloService" />
+
+</beans>

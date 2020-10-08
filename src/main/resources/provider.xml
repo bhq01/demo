@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmls = "http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!--  provider's name  -->
+    <dubbo:application name="dubbo-server" />
+
+    <!-- ZooKeeper register center address -->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" />
+
+    <!-- Dubbo protocol expose port -->
+    <dubbo:protocol name="dubbo" port="20880" />
+
+    <!-- expose service interface -->
+    <dubbo:service interface="com.example.demo.dubbo.api.IHelloService" ref="helloService" />
+
+    <!-- implement class -->
+    <bean id="helloService" class="com.example.demo.dubbo.server.HelloServiceImpl" />
+
+</beans>
